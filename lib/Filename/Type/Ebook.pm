@@ -1,16 +1,15 @@
-package Filename::Ebook;
+package Filename::Type::Ebook;
+
+use 5.010001;
+use strict;
+use warnings;
 
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
-use 5.010001;
-use strict;
-use warnings;
-
-require Exporter;
-our @ISA       = qw(Exporter);
+use Exporter qw(import);
 our @EXPORT_OK = qw(check_ebook_filename);
 
 our %SPEC;
@@ -78,10 +77,10 @@ our $RE = qr((?:$STR_RE)\z)i;
 $SPEC{check_ebook_filename} = {
     v => 1.1,
     summary => 'Check whether filename indicates being an e-book',
-    description => <<'_',
+    description => <<'MARKDOWN',
 
 
-_
+MARKDOWN
     args => {
         filename => {
             schema => 'str*',
@@ -107,7 +106,7 @@ sub check_ebook_filename {
 
 =head1 SYNOPSIS
 
- use Filename::Ebook qw(check_ebook_filename);
+ use Filename::Type::Ebook qw(check_ebook_filename);
  my $res = check_ebook_filename(filename => "how not to die.pdf");
  if ($res) {
      print "Filename indicates an ebook\n",
@@ -120,6 +119,7 @@ sub check_ebook_filename {
 
 =head1 SEE ALSO
 
-Other C<Filename::*>, e.g. L<Filename::Image> or L<Filename::Video>
+Other C<Filename::Type::*>, e.g. L<Filename::Type::Image> or
+L<Filename::Type::Video>
 
 =cut
